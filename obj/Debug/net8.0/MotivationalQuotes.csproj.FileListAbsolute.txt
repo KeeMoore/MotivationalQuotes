@@ -1,3 +1,12 @@
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.csproj.AssemblyReference.cache
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.AssemblyInfoInputs.cache
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.AssemblyInfo.cs
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.csproj.CoreCompileInputs.cache
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.RazorAssemblyInfo.cache
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.RazorAssemblyInfo.cs
+C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.sourcelink.json
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\appsettings.json
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\MotivationalQuotes.staticwebassets.runtime.json
@@ -78,14 +87,6 @@ C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Wor
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\keimh\MotivationalQuotes\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.csproj.AssemblyReference.cache
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.AssemblyInfoInputs.cache
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.AssemblyInfo.cs
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.csproj.CoreCompileInputs.cache
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.RazorAssemblyInfo.cache
-C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\MotivationalQuotes.RazorAssemblyInfo.cs
 C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\keimh\MotivationalQuotes\obj\Debug\net8.0\staticwebassets\msbuild.MotivationalQuotes.Microsoft.AspNetCore.StaticWebAssets.props

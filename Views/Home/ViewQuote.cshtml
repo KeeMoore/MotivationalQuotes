@@ -1,0 +1,26 @@
+@model MotivationalQuotes.Models.Quote
+
+@{
+    ViewData["Title"] = "View Quote";
+}
+
+<h1>@Model.Text</h1>
+<p>Author: @Model.Author</p>
+<p>Likes: @Model.Likes.Count</p>
+<p>Comments: @Model.Comments.Count</p>
+@foreach (var like in Model.Likes)
+{
+    <p>@like.User.FirstName @like.User.LastName</p>
+}
+
+<h2>Comments</h2>
+@foreach (var comment in Model.Comments)
+{
+    <p>@comment.Text - @comment.User.FirstName @comment.User.LastName</p>
+}
+
+<form asp-action="Comment" method="post">
+    <input type="hidden" name="quoteId" value="@Model.QuoteId" />
+    <textarea name="text" class="form-control" placeholder="Add a comment"></textarea>
+    <button type="submit" class="btn btn-primary mt-2">Comment</button>
+</form>

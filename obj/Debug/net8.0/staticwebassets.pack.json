@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\MotivationalQuotes.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\keimh\\MotivationalQuotes\\wwwroot\\Images\\694910.jpg",
+      "PackagePath": "staticwebassets\\Images\\694910.jpg"
+    },
+    {
+      "Id": "C:\\Users\\keimh\\MotivationalQuotes\\wwwroot\\Images\\mountain.jpg",
+      "PackagePath": "staticwebassets\\Images\\mountain.jpg"
+    },
+    {
       "Id": "C:\\Users\\keimh\\MotivationalQuotes\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

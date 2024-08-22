@@ -20,3 +20,145 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+header .logo {
+  font-size: 24px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('~/Images/mountain.jpg') no-repeat center center/cover;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.features .feature {
+  text-align: center;
+  width: 30%;
+}
+
+.features .feature h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.features .feature p {
+  font-size: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+
+/* theme.css */
+
+/* Light Theme */
+body.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light-theme .card {
+  background-color: #f8f9fa;
+  border-color: #dddddd;
+}
+
+.light-theme .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.light-theme .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.light-theme .form-control {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ced4da;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-theme .card {
+  background-color: #1e1e1e;
+  border-color: #333333;
+}
+
+.dark-theme .btn-primary {
+  background-color: #bb86fc;
+  border-color: #bb86fc;
+}
+
+.dark-theme .btn-secondary {
+  background-color: #03dac6;
+  border-color: #03dac6;
+}
+
+.dark-theme .form-control {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #444444;
+}

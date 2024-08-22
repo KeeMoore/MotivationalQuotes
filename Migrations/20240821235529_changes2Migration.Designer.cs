@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MotivationalQuotes.Context;
 
@@ -11,9 +12,11 @@ using MotivationalQuotes.Context;
 namespace MotivationalQuotes.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240821235529_changes2Migration")]
+    partial class changes2Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,29 +73,6 @@ namespace MotivationalQuotes.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("FavoriteQuotes");
-                });
-
-            modelBuilder.Entity("MotivationalQuotes.Models.Like", b =>
-                {
-                    b.Property<int>("LikeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("LikeId"));
-
-                    b.Property<int>("QuoteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LikeId");
-
-                    b.HasIndex("QuoteId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("MotivationalQuotes.Models.Quote", b =>
@@ -178,32 +158,13 @@ namespace MotivationalQuotes.Migrations
             modelBuilder.Entity("MotivationalQuotes.Models.FavoriteQuote", b =>
                 {
                     b.HasOne("MotivationalQuotes.Models.Quote", "Quote")
-                        .WithMany()
+                        .WithMany("FavoriteQuotes")
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MotivationalQuotes.Models.User", "User")
                         .WithMany("FavoriteQuotes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Quote");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MotivationalQuotes.Models.Like", b =>
-                {
-                    b.HasOne("MotivationalQuotes.Models.Quote", "Quote")
-                        .WithMany("Likes")
-                        .HasForeignKey("QuoteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MotivationalQuotes.Models.User", "User")
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -228,7 +189,7 @@ namespace MotivationalQuotes.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Likes");
+                    b.Navigation("FavoriteQuotes");
                 });
 
             modelBuilder.Entity("MotivationalQuotes.Models.User", b =>

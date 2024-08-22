@@ -46,8 +46,14 @@ button.accept-policy[b-h5qwp2ig6n] {
   white-space: nowrap;
   line-height: 60px;
 }
-
-/* Add this class for spacing */
-.spacing[b-h5qwp2ig6n] {
-  margin-right: 20px; /* Adjust the value as needed */
+/* Add this to your CSS file (e.g., site.css) */
+body[b-h5qwp2ig6n] {
+  background-image: url('/Image/694910.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff; /* Adjust text color for better readability */
 }
+
+
+

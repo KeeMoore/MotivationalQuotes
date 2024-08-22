@@ -20,6 +20,10 @@ public class User
     [MinLength(2, ErrorMessage = "Last name must be at least two characters.")]
     public string LastName { get; set; }
 
+
+
+    public string FullName => $"{FirstName} {LastName}";
+
     [UniqueEmail]
     [Display(Name = "Email:")]
     [Required(ErrorMessage = "Please enter email.")]
@@ -40,6 +44,11 @@ public class User
     [MinLength(8, ErrorMessage = "Confirm password must be at least eight characters.")]
     public string ConfirmPassword { get; set; }
 
+    public List<FavoriteQuote> FavoriteQuotes { get; set; } = new List<FavoriteQuote>();
+    public List<Quote> SharedQuotes { get; set; } = new List<Quote>();
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
 }

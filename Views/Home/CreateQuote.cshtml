@@ -1,0 +1,19 @@
+@model MotivationalQuotes.Models.Quote
+
+@{
+    ViewData["Title"] = "Add Quote";
+}
+
+<h1>Add a New Quote</h1>
+
+<form asp-action="CreateQuote" method="post">
+    <div class="form-group">
+        <label for="Text">Quote</label>
+        <textarea class="form-control" id="Text" name="Text" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Author">Author</label>
+        <input type="text" class="form-control" id="Author" name="Author" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Quote</button>
+</form>

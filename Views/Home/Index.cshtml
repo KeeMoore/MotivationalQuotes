@@ -1,13 +1,14 @@
 ﻿@model HomePageViewModel;
 
 @{
+    Layout = "_LandingLayout";
     var user = Model.User;
     var loginUser = Model.LoginUser;
     ViewData["Title"] = "Home Page";
 }
 
 <div>
-    <h1 class="display-4 mb-3">Login or Register for our site below.</h1>
+    <h1 class="display-4 mb-3">Login or Register for Motivational Quotes below.</h1>
 
     @* check if message is null *@
 

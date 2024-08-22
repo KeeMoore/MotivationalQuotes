@@ -1,10 +1,61 @@
-@model User;
+
+@model MotivationalQuotes.Models.DashboardViewModel
 
 @{
-    var user = Model;
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Dashboard";
 }
 
 <section>
-    <h1 class="display-4 mb-3">Welcome @user.FirstName!</h1>
+    <h1 class="display-4 mb-3">Welcome, @Model.User.FullName!</h1>
+    <button onclick="toggleDarkTheme()" class="btn btn-dark">Toggle Dark Theme</button>
 </section>
+
+<a href="@Url.Action("CreateQuote")" class="btn btn-primary">Add Quote</a>
+<link rel="stylesheet" href="~/css/site.css">
+<style>/* Darker Card Styles */
+.card.quote-card {
+    background-color: #444343; /* Darker background color for the card */
+    border: 1px solid #444444; /* Border color to distinguish the card */
+    color: #0e0d0d; /* Text color for better readability */
+}
+
+.btn {
+    margin-bottom: 10px; /* Adjust the value as needed */
+}
+
+.card.quote-card .card-body {
+    background-color: #ccdfee; /* Slightly lighter background for the card body */
+    border-radius: 5px; /* Rounded corners for a smoother look */
+    padding: 15px; /* Padding inside the card body */
+}
+</style>
+<h2>All Quotes</h2>
+<div class="row">
+    @foreach (var quote in Model.Quotes)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card quote-card">
+                <div class="card-body">
+                    <p>"@quote.Text" - @quote.Author</p>
+                    <p>Likes: @quote.Likes.Count</p>
+                    <p>Comments: @quote.Comments.Count</p>
+                    <form asp-action="Like" method="post" class="d-inline">
+                        <input type="hidden" name="quoteId" value="@quote.QuoteId" />
+                        <button type="submit" class="btn btn-primary mr-2">Like</button>
+                    </form>
+                    <form asp-action="Unlike" method="post" class="d-inline">
+                        <input type="hidden" name="quoteId" value="@quote.QuoteId" />
+                        <button type="submit" class="btn btn-secondary mr-2">Unlike</button>
+                    </form>
+                    <form asp-action="Comment" method="post" class="d-inline">
+                        <input type="hidden" name="quoteId" value="@quote.QuoteId" />
+                        <textarea name="text" class="form-control" placeholder="Add a comment"></textarea>
+                        <button type="submit" class="btn btn-primary mt-2">Comment</button>
+                    </form>
+                    <a href="@Url.Action("ViewQuote", new { id = quote.QuoteId })" class="d-block mt-2">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

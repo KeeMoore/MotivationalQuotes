@@ -1,0 +1,58 @@
+@{
+    Layout = "_LandingLayout";
+    ViewData["Title"] = "Landing Page";
+}
+<section class="hero">
+    <h1>Welcome to Motivational Quotes</h1>
+    <p>Your daily dose of inspiration.</p>
+    <a href="/home" class="btn">Login / Register</a>
+</section>
+<section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>Join our community to receive daily motivational quotes and affirmations right in your inbox for free.
+        Our platform offers a vast collection of quotes organized into various categories such as Daily Quotes,
+        Encouraging Statements, Motivational Quotes, and Happiness.
+        You can submit your favorite quotes, search for specific quotes by keywords or category, and save your favorites
+        for easy access.
+        Spread positivity by sharing your favorite quotes on social media. With a clean, modern design and a
+        user-friendly interface, our platform is accessible on both desktop and mobile devices, ensuring a seamless
+        experience for all users.
+        Register and login to start your journey towards daily inspiration and encouragement.</p>
+</section>
+<section id="quotes" class="quotes-section">
+    <h2>Quotes</h2>
+    <p>Explore our collection of motivational quotes to find the inspiration you need.</p>
+</section>
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Feel free to reach out to us for any inquiries or support. We're here to help! (xxx-xxx-xxxx) </p>
+</section>
+<section class="daily-quotes">
+    <h2>Quote of the Day</h2>
+    <p>"Believe you can and you're halfway there." - Theodore Roosevelt</p>
+    <div class="interaction">
+        @* <button onclick="likeQuote(1)">Like</button>
+        <button onclick="unlikeQuote(1)">Unlike</button> *@
+        <button onclick="shareQuote()">Share</button>
+        <button onclick="commentQuote()">Comment</button>
+        <button onclick="toggleTheme()" class="btn btn-dark">Toggle Theme</button>
+
+    </div>
+    @* <p id="like-count"> Likes: 0</p> *@
+    <p id="share-count"> Shares: 0</p>
+    <p id="comment-count"> Comments: 0</p>
+</section>
+<section class="features">
+    <div class="feature">
+        <h2>Daily Inspiration</h2>
+        <p>Receive a new motivational quote every day to keep you inspired.</p>
+    </div>
+    <div class="feature">
+        <h2>Community Engagement</h2>
+        <p>Join a community of like-minded individuals and share your thoughts.</p>
+    </div>
+    <div class="feature">
+        <h2>Personalized Quotes</h2>
+        <p>Get quotes tailored to your interests and goals.</p>
+    </div>
+</section>

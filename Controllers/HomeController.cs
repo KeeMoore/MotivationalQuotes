@@ -4,6 +4,7 @@ using MotivationalQuotes.Models;
 using Microsoft.AspNetCore.Identity;
 using MotivationalQuotes.Context;
 using MotivationalQuotes.Attributes;
+using Microsoft.EntityFrameworkCore;
 
 namespace MotivationalQuotes.Controllers;
 
@@ -18,7 +19,16 @@ public class HomeController : Controller
         _context = context;
     }
 
+
+
+    // New action method for the landing page
     [HttpGet("")]
+    public IActionResult Landing()
+    {
+        return View("Landing");
+    }
+
+    [HttpGet("home")]
     public IActionResult Index(string? message)
     {
         ViewBag.Message = message;
@@ -37,6 +47,13 @@ public class HomeController : Controller
     {
         if (!ModelState.IsValid)
         {
+            if (!ModelState.IsValid)
+            {
+                var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                Console.WriteLine(message);
+            }
             // form is invalid
             // show the form again with errors
 
@@ -116,6 +133,7 @@ public class HomeController : Controller
     [HttpGet("dashboard")]
     public IActionResult Dashboard()
     {
+
         int? userId = HttpContext.Session.GetInt32("userId");
         if (userId is null)
         {
@@ -129,7 +147,21 @@ public class HomeController : Controller
             return RedirectToAction("Index");
         }
 
-        return View("Dashboard", user);
+        var quotes = _context.Quotes
+        .Include(q => q.Likes)
+        .Include(q => q.Comments)
+            .ThenInclude(c => c.User)
+        .ToList();
+
+
+
+        var dashboardViewModel = new DashboardViewModel
+        {
+            User = user,
+            Quotes = quotes
+        };
+
+        return View("Dashboard", dashboardViewModel);
     }
 
     [HttpGet("logout")]
@@ -149,4 +181,137 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    public IActionResult ViewQuote(int id)
+    {
+        var quote = _context.Quotes
+            .Include(q => q.Comments)
+                .ThenInclude(c => c.User)
+            .FirstOrDefault(q => q.QuoteId == id);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+
+        return View(quote);
+    }
+
+    [HttpGet("create-quote")]
+    public IActionResult CreateQuote()
+    {
+        return View();
+    }
+
+    [HttpPost("create-quote")]
+    public IActionResult CreateQuote(Quote newQuote)
+    {
+        _logger.LogInformation("CreateQuote action called");
+
+        if (!ModelState.IsValid)
+        {
+            _logger.LogWarning("Model state is invalid");
+            if (!ModelState.IsValid)
+            {
+                var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                Console.WriteLine(message);
+            }
+            return View(newQuote);
+        }
+
+        int? userId = HttpContext.Session.GetInt32("userId");
+        if (userId is null)
+        {
+            _logger.LogWarning("User ID is null");
+            return RedirectToAction("Index");
+        }
+
+        newQuote.PostedByUserId = userId.Value;
+        _context.Quotes.Add(newQuote);
+        _context.SaveChanges();
+
+        _logger.LogInformation("Quote added successfully");
+
+        return RedirectToAction("Dashboard");
+    }
+
+
+    [HttpPost("home/like")]
+    public IActionResult Like(int quoteId)
+    {
+        int? userId = HttpContext.Session.GetInt32("userId");
+        if (userId is null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var quote = _context.Quotes
+            .Include(q => q.Likes)
+            .FirstOrDefault(q => q.QuoteId == quoteId);
+
+        if (quote == null)
+        {
+            return RedirectToAction("Dashboard");
+        }
+
+        var like = new Like
+        {
+            QuoteId = quoteId,
+            UserId = (int)userId
+        };
+
+        _context.Likes.Add(like);
+        _context.SaveChanges();
+
+        return RedirectToAction("Dashboard");
+    }
+
+    [HttpPost("home/unlike")]
+    public IActionResult Unlike(int quoteId)
+    {
+        int? userId = HttpContext.Session.GetInt32("userId");
+        if (userId is null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var like = _context.Likes
+            .FirstOrDefault(l => l.QuoteId == quoteId && l.UserId == userId);
+
+        if (like == null)
+        {
+            return RedirectToAction("Dashboard");
+        }
+
+        _context.Likes.Remove(like);
+        _context.SaveChanges();
+
+        return RedirectToAction("Dashboard");
+    }
+
+
+
+    [HttpPost]
+    public IActionResult Comment(int quoteId, string text)
+    {
+        var quote = _context.Quotes.Include(q => q.Comments).FirstOrDefault(q => q.QuoteId == quoteId);
+        if (quote == null) return NotFound();
+
+        int? userId = HttpContext.Session.GetInt32("userId");
+        if (userId == null) return Unauthorized();
+
+        var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+        if (user == null) return Unauthorized();
+
+        quote.Comments.Add(new Comment { QuoteId = quoteId, UserId = user.UserId, Text = text });
+        _context.SaveChanges();
+
+        return RedirectToAction("Dashboard");
+    }
+
+
 }
+
+
