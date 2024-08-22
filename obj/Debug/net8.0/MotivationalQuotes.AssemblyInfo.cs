@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MotivationalQuotes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0e2879902d6642e1a6ac5935ce2f5998ff6e0f6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d89a42f5917c46bc200abd45ef9bccb93b099d3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MotivationalQuotes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MotivationalQuotes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
